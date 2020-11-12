@@ -14,8 +14,13 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("")
-    public List<Article> getAll() {
-        return articleService.getAll();
+    public List<Article> getAll(@RequestParam(required = false) Long topicId) {
+
+        if (topicId == null) {
+            return articleService.getAll();
+        } else {
+            return articleService.getAllByTopicId(topicId);
+        }
     }
 
     @GetMapping("/{id}")

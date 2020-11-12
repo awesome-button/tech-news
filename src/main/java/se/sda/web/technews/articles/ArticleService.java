@@ -2,7 +2,6 @@ package se.sda.web.technews.articles;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +14,10 @@ public class ArticleService {
 
     public List<Article> getAll() {
         return repository.findAll();
+    }
+
+    public List<Article> getAllByTopicId(Long topicId) {
+        return repository.findAllByTopics_id(topicId);
     }
 
     public Optional<Article> getById(Long id) {
