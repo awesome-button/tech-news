@@ -1,6 +1,7 @@
 package se.sda.web.technews.articles;
 
 import se.sda.web.technews.comments.Comment;
+import se.sda.web.technews.topics.Topic;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +25,9 @@ public class Article {
 
     @OneToMany
     private List<Comment> comments;
+
+    @ManyToMany
+    private List<Topic> topics;
 
     public Article() {}
 
@@ -53,5 +57,13 @@ public class Article {
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
     }
 }
