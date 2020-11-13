@@ -35,4 +35,22 @@ public class ArticleService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public void reactToArticle(Long id, String reaction) {
+        Optional<Article> dbArticle = getById(id);
+
+        if (dbArticle.isPresent()) {
+            Article article = dbArticle.get();
+
+            if (reaction.equals("like")) {
+                Long likes = article.getLikes() == null ? 1 : article.getLikes() + 1;
+                article.setLikes(likes);
+            } else if (reaction.equals("dislike")) {
+                Long dislikes = article.getDislikes() == null ? 1 : article.getDislikes() + 1;
+                article.setDislikes(dislikes);
+            }
+
+            update(article);
+        }
+    }
 }

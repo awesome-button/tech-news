@@ -10,6 +10,10 @@ import java.util.List;
 @Table(name="articles")
 public class Article {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(columnDefinition = "TEXT")
     private String title;
 
@@ -19,9 +23,11 @@ public class Article {
     @Column(columnDefinition = "TEXT")
     private String authorName;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(columnDefinition = "TEXT")
+    private Long likes;
+
+    @Column(columnDefinition = "TEXT")
+    private Long dislikes;
 
     @OneToMany
     private List<Comment> comments;
@@ -65,5 +71,21 @@ public class Article {
 
     public void setTopics(List<Topic> topics) {
         this.topics = topics;
+    }
+
+    public Long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Long likes) {
+        this.likes = likes;
+    }
+
+    public Long getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(Long dislikes) {
+        this.dislikes = dislikes;
     }
 }
