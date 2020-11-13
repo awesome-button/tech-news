@@ -37,6 +37,13 @@ public class Article {
 
     public Article() {}
 
+    public Article(Long id, String title, String body, String authorName) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.authorName = authorName;
+    }
+
     public String getTitle() {
         return title;
     }
