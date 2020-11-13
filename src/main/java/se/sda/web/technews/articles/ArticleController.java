@@ -43,4 +43,9 @@ public class ArticleController {
         articleService.delete(id);
     }
 
+    @PutMapping("/{id}")
+    public void reactToArticle(@PathVariable Long id, @RequestParam String reaction) {
+        articleService.reactToArticle(id, reaction);
+    }
+
 }
